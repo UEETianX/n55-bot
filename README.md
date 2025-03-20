@@ -41,4 +41,4 @@
 
 ## 赞助
 
-爱发电链接，复制到浏览器打开：[https://afdian.com/a/55bot](https://afdian.com/a/55bot)
+爱发电链接：[https://afdian.com/a/55bot](https://afdian.com/a/55bot)
