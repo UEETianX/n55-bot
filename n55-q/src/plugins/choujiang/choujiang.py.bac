@@ -1,0 +1,159 @@
+from nonebot.adapters.qq import Message,MessageSegment
+from nonebot import on_command,on_message
+from nonebot.typing import T_State
+from nonebot.adapters import Bot,Event
+from nonebot.params import CommandArg
+from nonebot import get_bots
+import datetime
+import random
+import time
+import numpy as np 
+import string
+import pandas as pd
+from random import choice
+import cv2
+from PIL import ImageFont, ImageDraw, Image
+from nonebot.adapters import Bot,Event
+from nonebot.params import CommandArg
+import os
+
+choujiang=on_command("抽奖测试",priority=1)
+
+@choujiang.handle()
+async def handle_function(event: Event,args: Message = CommandArg()):
+    user_id = event.get_user_id()
+    group_id = event.peerUin
+    today = datetime.datetime.now()
+    time1 = str(today.year) + "_" + str(today.month) + "_" + str(today.day) + "_" + user_id + group_id
+    text = "现在时间：" + str(today.year) + "年" + str(today.month) + "月" + str(today.day) + "日"
+    arg = args.extract_plain_text()
+    if arg=="说明":
+        await choujiang.finish("模拟十连抽\n概率公示： UR:5% SSR:15% SR:25% R:55%。\n默认标准池10连抽，也可指定部分UR概率UP，占UR的75%，例如：查抽奖标枪\n目前支持的概率UP：渡鸦、货E、开拓者\n890悦动、伊德里斯[M/P/K]、海妖\n海妖私掠、标枪、F8A\nF8C、T8A、王船、惩戒")
+    shiptable = pd.read_csv("C:\\Users\Administrator\Desktop\Qbot\wuwuji/src/plugins/choujiang/奖池.csv")
+    shiptable.index = shiptable.iloc[:,3]
+    n = choice(range(1,101))
+    if n>94:
+        if arg:
+            x = choice(range(1,5))
+            if x>1:
+                ship = [arg]
+            else:
+                ship = [choice(shiptable.loc["UR.png","name"])]
+        else:
+            ship = [choice(shiptable.loc["UR.png","name"])]
+    elif n>79:
+        ship = [choice(shiptable.loc["SSR.png","name"])]
+    elif n>54:
+        ship = [choice(shiptable.loc["SR.png","name"])]
+    else:
+        ship = [choice(shiptable.loc["R.png","name"])]
+    for i in range(1,10):
+        n = choice(range(1,101))
+        if n>94:
+            if arg:
+                x = choice(range(1,5))
+                if x>1:
+                    ship = ship + [arg]
+                else:
+                    ship = ship + [choice(shiptable.loc["UR.png","name"])]
+            else:
+                ship =  ship + [choice(shiptable.loc["UR.png","name"])]
+        elif n>79:
+            ship = ship + [choice(shiptable.loc["SSR.png","name"])]
+        elif n>54:
+            ship = ship + [choice(shiptable.loc["SR.png","name"])]
+        else:
+            ship = ship + [choice(shiptable.loc["R.png","name"])]
+        print(ship)
+
+    shiptable.index = shiptable.iloc[:,0]
+    try:
+        filtable = shiptable.loc[ship,:]
+    except:
+        await choujiang.finish("暂不支持该船只概率UP")
+    filtable = shiptable.loc[ship,:]
+    filtable = filtable.sort_values(by="per",ascending=False)
+    print(filtable)
+    def add_alpha_channel(img):
+        b_channel, g_channel, r_channel = cv2.split(img) # 剥离jpg图像通道
+        alpha_channel = np.ones(b_channel.shape, dtype=b_channel.dtype) * 255 # 创建Alpha通道
+        img_new = cv2.merge((b_channel, g_channel, r_channel, alpha_channel)) # 融合通道
+        return img_new
+    def imgadd(img1,img2,x1,y1):
+        x2 = x1 + img2.shape[1]
+        y2 = y1 + img2.shape[0]
+        yy1 = 0
+        yy2 = img2.shape[0]
+        xx1 = 0
+        xx2 = img2.shape[1]
+        if x1 < 0:
+            xx1 = -x1
+            x1 = 0
+        if y1 < 0:
+            yy1 = - y1
+            y1 = 0
+        if x2 > img1.shape[1]:
+            xx2 = img2.shape[1] - (x2 - img1.shape[1])
+            x2 = img1.shape[1]
+        if y2 > img1.shape[0]:
+            yy2 = img2.shape[0] - (y2 - img1.shape[0])
+            y2 = img1.shape[0]
+        alpha_png = img2[yy1:yy2,xx1:xx2,3] / 255.0
+        alpha_jpg = 1 - alpha_png
+        for c in range(0,3):
+            img1[y1:y2, x1:x2, c] = ( (alpha_jpg*img1[y1:y2,x1:x2,c]) + (alpha_png*img2[yy1:yy2,xx1:xx2,c]))
+        return(img1)
+    card_path = "C:\\Users\Administrator\Desktop\Qbot\wuwuji/src/plugins/choujiang/choujiangmuban.png"
+    card = cv2.imread(card_path, cv2.IMREAD_UNCHANGED)
+    if card.shape[2] == 3:
+        card= add_alpha_channel(card)
+    for i in range(0,10):
+        print("C:\\Users\Administrator\Desktop\Qbot\wuwuji/src/plugins/choujiang"+filtable.iloc[i,2])
+        shippic1 = cv2.imread("C:\\Users\Administrator\Desktop\Qbot\wuwuji/src/plugins/choujiang"+filtable.iloc[i,2], cv2.IMREAD_UNCHANGED)
+        shippic1 = cv2.resize(shippic1, (240, 140))
+        if shippic1.shape[2] == 3:
+            shippic1= add_alpha_channel(shippic1)
+        perpic = cv2.imread("C:\\Users\Administrator\Desktop\Qbot\wuwuji/src/plugins/choujiang/"+filtable.iloc[i,3], cv2.IMREAD_UNCHANGED)
+        if perpic.shape[2] == 3:
+            perpic= add_alpha_channel(perpic)
+        height, width, channels1 = perpic.shape
+        perpic = cv2.resize(perpic, (int(width*40/height),40))
+        height, width, channels1 = perpic.shape
+        if i<5:
+            card = imgadd(card,shippic1,50+290*i,100)
+            card = imgadd(card,perpic,int(170+290*i-width/2),60)
+        else:
+            card = imgadd(card,shippic1,50+290*(i-5),350)
+            card = imgadd(card,perpic,int(170+290*(i-5)-width/2),310)
+    fontpath = "C:\\Users\Administrator\Desktop\Qbot\wuwuji/src/plugins/1637505678825667.ttc"
+    b,g,r,a = 19,69,139,0
+    font = ImageFont.truetype(fontpath,30)
+    img_pil = Image.fromarray(card)
+    draw = ImageDraw.Draw(img_pil)
+    for i in range(0,10):
+        w,h =font.getsize(filtable.iloc[i,0])
+        if i<5:
+            draw.text((int(170+290*i-w/2),240),filtable.iloc[i,0],font=font,fill=(b,g,r,a))
+        else:
+            draw.text((int(170+290*(i-5)-w/2),490),filtable.iloc[i,0],font=font,fill=(b,g,r,a))
+
+    img = np.array(img_pil)
+    cv2.imwrite('C:\\Users\Administrator\Desktop\Qbot\wuwuji/src/plugins/choujiang/choujiang.jpg', img)
+    f=pd.read_csv("C:\\Users\Administrator\Desktop\Qbot\wuwuji/src/plugins/choujiang/daybat.txt")
+    if time1 in np.array(f.loc[:,"A"]).tolist():
+        await choujiang.finish("今日次数用完")
+    else:
+        p = pd.DataFrame({"A":[time1]})
+        f = f._append(p,ignore_index = True,sort = False)
+        f.to_csv("C:\\Users\Administrator\Desktop\Qbot\wuwuji/src/plugins/choujiang/daybat.txt",index = False)
+    path = os.path.split(os.path.realpath(__file__))[0] + "/choujiang.jpg"
+    f=pd.read_csv("C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang/kucun.txt")
+    if str(user_id) in np.array(f.loc[:,"id"].astype(str)).tolist():
+        f.loc[f['id'].astype(str).str.contains(str(user_id),case=False),"data"] = str(f.loc[f['id'].astype(str).str.contains(str(user_id),case=False),"data"].to_list()[0])+","+",".join([str(i) for i in ship])
+        f.to_csv("C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang/kucun.txt",index = False)
+    else:
+        text = [",".join(ship)]
+        p = pd.DataFrame({"id":str(user_id),"data":text})
+        f = f._append(p,ignore_index = True,sort = False)
+        f.to_csv("C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang/kucun.txt",index = False)
+    await choujiang.finish(MessageSegment.image(path))

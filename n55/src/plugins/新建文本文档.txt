@@ -1,0 +1,32 @@
+from nonebot.adapters.red import Message,MessageSegment
+from nonebot import on_command,on_message
+from nonebot.typing import T_State
+from nonebot.adapters import Bot,Event
+from nonebot.params import CommandArg
+import requests
+import os
+import random
+import nonebot
+import urllib
+import requests
+from urllib import error
+import random
+from bs4 import BeautifulSoup
+import time
+from fake_useragent import UserAgent
+from PIL import ImageFont, ImageDraw, Image
+import numpy as np
+import cv2
+from io import BytesIO
+import sys
+import pandas as pd
+import string
+from nonebot.adapters.red.permission import GROUP_ADMIN, GROUP_OWNER
+
+ceshi=on_command("权限测试",priority=1,permission=GROUP_ADMIN | GROUP_OWNER)
+
+@ceshi.handle()
+async def handle_function(event: Event,args: Message = CommandArg()):
+    user_id = event.get_user_id()
+    group_id = event.peerUin
+    await ceshi.finish("管理权限")

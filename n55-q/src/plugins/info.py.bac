@@ -1,0 +1,725 @@
+from nonebot.adapters.red import Message,MessageSegment
+from nonebot import on_command,on_message
+from nonebot.typing import T_State
+from nonebot.adapters import Bot,Event
+import requests
+import os
+import random
+import datetime
+import time
+from time import sleep
+import numpy as np
+import string
+import pandas as pd
+from random import choice
+import cv2
+from PIL import ImageFont, ImageDraw, Image
+import urllib.request
+import requests
+from urllib import error
+import random
+from bs4 import BeautifulSoup
+import time
+from fake_useragent import UserAgent
+import numpy as np 
+from io import BytesIO
+import xml.etree.ElementTree as ET
+import math
+
+find=on_message(priority=2)
+
+@find.handle()
+async def _(bot:Bot,event:Event,state:T_State):
+    msg = str(event.get_message()).strip().replace(" ","")
+    if "查全览图".lower() == msg.lower() or "查舰船全览图" == msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/舰船全览图.png'
+        await find.finish("如需查看车辆尺寸，输入：[查车辆全览图]" +MessageSegment.image(path))
+    
+    if "查车辆全览图" == msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/车辆全览图.png'
+        await find.finish("如需查看舰船尺寸，输入：[查舰船全览图]" +MessageSegment.image(path))
+
+    if "查舰队规模".lower() in msg.lower():
+        group_id = event.peerUin
+        if group_id == "774655949":
+            path=os.path.split(os.path.realpath(__file__))[0] + '/img/航安规模.png'
+            await find.finish(MessageSegment.image(path))
+        elif group_id == "955342491" or group_id == "881232934":
+            path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/舰队规模.jpg'
+            await find.finish(MessageSegment.image(path))
+        elif group_id == "751972290":
+            path=os.path.split(os.path.realpath(__file__))[0] + '/img/UEE特种舰队规模.png'
+            await find.finish(MessageSegment.image(path))
+        else:
+            path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/舰队规模.jpg'
+            await find.finish("该群尚未录入舰队规模，可以使用https://starship42.com/工具绘制后，私聊作者添加")
+
+    if "查罗威尔".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/赫斯顿·罗威尔全览图.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查18区".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/弧光星·18区全览图.PNG'
+        await find.finish(MessageSegment.image(path))
+
+    if "查奥里森".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/十字军·奥里森V1版本地图.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查新巴贝奇".lower() in msg.lower():
+        path1=os.path.split(os.path.realpath(__file__))[0] + '/img/新巴贝奇1.png'
+        path2=os.path.split(os.path.realpath(__file__))[0] + '/img/新巴贝奇2.png'
+        path3=os.path.split(os.path.realpath(__file__))[0] + '/img/新巴贝奇3.png'
+        await find.finish(MessageSegment.image(path1)+MessageSegment.image(path2)+MessageSegment.image(path3))
+    
+    if "查周年".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/2953ZN.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查光灯".lower() in msg.lower() or "查灯光".lower() in msg.lower():
+        await find.finish("光灯节活动页面：\nhttps://robertsspaceindustries.com/comm-link/transmission/19605-Luminalia-2953")
+
+    if "查借船表".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/借船表.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查美元价格表".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/美元价格表.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查游戏币价格表".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/游戏币价格表.png'
+        await find.finish(MessageSegment.image(path))
+
+
+    if "查菜单".lower() == msg.lower() or "查指令".lower() == msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/天命菜单.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "原神".lower() == msg.lower() or "原神！".lower() == msg.lower():
+        await find.finish("启动！")
+
+    if "查打捞" in msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/打捞价格.jpg'
+        await find.finish(MessageSegment.image(path))
+
+
+    if "查游戏配置".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/游戏配置目录.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查新手问答".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/新手问答.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查消费额奖励".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/消费额奖励图.jpeg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查游戏官网".lower() in msg.lower():
+        await find.finish("https://robertsspaceindustries.com/")
+    
+    if "查KOOK".lower() in msg.lower():
+        group_id = event.peerUin
+        if group_id == "955342491":
+            await find.finish("60893671")
+        elif group_id == "473081444":
+            await find.finish("https://kook.top/9ZjYzl")
+        elif group_id == "622854120":
+            await find.finish("75523169")
+        elif group_id == "959233317":
+            await find.finish("6947rx3fq9")
+        elif group_id == "74821097":
+            await find.finish("54231316")
+        elif group_id == "745131656":
+            await find.finish("15873552")
+        elif group_id == "472786437" or group_id == "691702096" or group_id == "929172498":            
+            await find.finish("88696228")
+        elif group_id == "569705657":
+            await find.finish("53591966")
+        elif group_id == "549513666":
+            await find.finish("https://kook.top/TylEVd")
+        elif group_id == "877388955":
+            await find.finish("13977959")
+        elif group_id == "751972290":
+            await find.finish("https://pd.qq.com/s/1egfs7ypf")
+        elif group_id == "477726252":
+            await find.finish("https://kook.top/FFfBMa")
+        elif group_id == "924584753":
+            await find.finish("https://kook.top/rrhVTG")
+        elif group_id == "547372526" or group_id == "348166175":
+            await find.finish("25182973")
+        else:
+            await find.finish("该群尚未录入KOOK链接，可私聊作者添加")
+
+
+
+    if "查舰队官网".lower() in msg.lower():
+        group_id = event.peerUin
+        if group_id == "955342491":
+            path=os.path.split(os.path.realpath(__file__))[0] + '/img/FODA01-Logo.png'
+            await find.finish("https://robertsspaceindustries.com/orgs/FODA01"+ MessageSegment.image(path))
+        elif group_id == "473081444":
+            await find.finish("https://robertsspaceindustries.com/orgs/0928")
+        elif group_id == "622854120":
+            await find.finish("https://robertsspaceindustries.com/orgs/ICEBREAKE")
+        elif group_id == "959233317":
+            await find.finish("https://robertsspaceindustries.com/orgs/CKHG")
+        elif group_id == "74821097":
+            await find.finish("https://robertsspaceindustries.com/orgs/JIUWEI")
+        elif group_id == "745131656":
+            path=os.path.split(os.path.realpath(__file__))[0] + '/img/自由联盟.jpg'
+            await find.finish("https://robertsspaceindustries.com/orgs/CNZHSC/members"+ MessageSegment.image(path))
+        elif group_id == "751972290":
+            path=os.path.split(os.path.realpath(__file__))[0] + '/img/UEE特种舰队.jpg'
+            await find.finish("https://robertsspaceindustries.com/orgs/UEEJSOC" + MessageSegment.image(path))
+        elif group_id == "472786437" or group_id == "691702096" or group_id == "929172498":
+            path=os.path.split(os.path.realpath(__file__))[0] + '/img/深航舰队.png'
+            await find.finish("https://robertsspaceindustries.com/orgs/SHENHANG" + MessageSegment.image(path))
+        elif group_id == "774655949":
+            path=os.path.split(os.path.realpath(__file__))[0] + '/img/航安.jpg'
+            await find.finish("https://robertsspaceindustries.com/orgs/SVSC" + MessageSegment.image(path))
+        elif group_id == "477726252":
+            path=os.path.split(os.path.realpath(__file__))[0] + '/img/NOGS-logo.png'
+            await find.finish("https://robertsspaceindustries.com/orgs/NOGS" + MessageSegment.image(path))
+        elif group_id == "924584753":
+            await find.finish("https://robertsspaceindustries.com/orgs/OFSX")
+        elif group_id == "547372526" or group_id == "348166175":
+            await find.finish("https://robertsspaceindustries.com/orgs/SILVERFISH")
+        else:
+            await find.finish("该群尚未录入舰队官网，可私聊作者添加")
+
+    if "查部门结构".lower() in msg.lower():
+        group_id = event.peerUin
+        if group_id == "955342491":
+            path=os.path.split(os.path.realpath(__file__))[0] + '/img/天命部门.png'
+            await find.finish("天命舰队成员登记表https://docs.qq.com/sheet/DTmx5S2N4YUNrbllX?tab=BB08J2"+ MessageSegment.image(path))
+        else:
+            path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/舰队规模.jpg'
+            await find.finish("该群尚未录入部门结构，可以使用图片形式，私聊作者添加")
+
+    if "查舰队须知".lower() in msg.lower():
+        group_id = event.peerUin
+        if group_id == "955342491":
+            path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/舰队规模.jpg'
+            await find.finish(MessageSegment.image(path))
+        elif group_id == "751972290":
+            await find.finish("1.舰队采用邀请制，不对外开放，由邀请者对其负责(邀请者负责简单引导教学，可自愿提供启动资金)。\n2.新入群成员ID格式为UEE-游戏ID(代号)，进群请修改ID格式语音ID同步修改。\n3.不定期组织集体活动，集体活动结束后凡是参与此次集体活动者可抽取商店现金护甲一套。\n4.舰队集体行动集合地点为十字军行星炽天使空间站(将部分舰船停泊此处)\n5.舰队唯一要求大家融洽相处。\n6.舰队语言软件为YY语音频道号30506666(集体活动时需要使用语音，平常不做要求)" )
+        else:
+            path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/舰队规模.jpg'
+            await find.finish("该群尚未录入舰队须知，文字图片形式均可，私聊作者添加")
+
+    if "查舰队视频号".lower() in msg.lower():
+        group_id = event.peerUin
+        if group_id == "745131656":
+            await find.finish("5- 长按复制此条消息，打开抖音搜索，查看TA的更多作品。 https://v.douyin.com/iRCGBLYH/ 4@7.com 02/12")
+        else:
+            path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/舰队规模.jpg'
+            await find.finish("该群尚未录入舰队视频号，可私聊作者添加")
+
+
+
+    if msg == "查实用网站":
+        await find.finish("拆包数据网1：https://hardpoint.io/#/ \n拆包数据网2：https://www.erkul.games/live/calculator \nwiki网站：https://starcitizen.tools/Ships \n官网路线图：https://robertsspaceindustries.com/roadmap/progress-tracker/deliverables\n概念船借船公告：https://support.robertsspaceindustries.com/hc/en-us/articles/360003093114-Loaner-Ship-Matrix\n跑商网站1：https://uexcorp.space/trade \n跑商网站2：https://fleetyards.net/trade-routes \n跑商网站3：https://gallog.co \n跑商网站4：https://sc-trade.tools/home")
+
+    if  "查星尘".lower() == msg.lower() or  "插星尘".lower() == msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/白痴.jpg'
+        await find.finish("暖暖的~紧紧的~" + MessageSegment.at(2632032477) + MessageSegment.image(path))
+
+    if  "查梦心".lower() == msg.lower() or  "插梦心".lower() == msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/白痴.jpg'
+        await find.finish("暖暖的~紧紧的~" + MessageSegment.at(2874809729) + MessageSegment.image(path))
+
+    if  "插55姬" == msg or "插机器人" == msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/大哭.jpg'
+        await find.finish("天星天星，这个人欺负我！"+MessageSegment.at(3126410936) + MessageSegment.image(path))
+    
+    if "查55姬" == msg or "查机器人" == msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/DF.jpg'
+        await find.finish("欸？问我吗？我是全天待命的智障人形，虽然偶尔也会偷个懒啦~如果我睡着了或者被XX抓走了不要骂我好不好~" + MessageSegment.image(path))
+
+    if "查天星" == msg or "插天星" == msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/仰望.jpg'
+        await find.finish("旁观吃瓜~"+ MessageSegment.at(3126410936) +MessageSegment.image(path))
+
+    if "查喵" == msg or "插喵" == msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/日喵.png'
+        await find.finish(Message("虽然有点难以启齿~但是~")+MessageSegment.at(1697344211) +MessageSegment.image(path))
+
+    if "查菜猫" == msg or "插菜猫" == msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/白痴.jpg'
+        await find.finish(Message("是奶油！我加了奶油！")+MessageSegment.at(2395029012) +MessageSegment.image(path))
+
+    if "查蓝寒" == msg or "插蓝寒" == msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/白痴.jpg'
+        await find.finish(Message("哼哼哼 啊啊啊啊啊啊x114514 ")+MessageSegment.at(2105748971) +MessageSegment.image(path))
+
+    if "傻瓜机器人" in msg or "傻卵机器人" in msg or "傻逼机器人" in msg or "sb机器人" in msg or "智障机器人" in msg or "脑残机器人" in msg or "傻瓜55姬" in msg or "傻卵55姬" in msg or "傻逼55姬" in msg or "sb55姬" in msg or "智障55姬" in msg or "脑残55姬" in msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/对不起.jpg'
+        await find.finish("对不起。。我会改的。。"+MessageSegment.image(path))
+
+    if "查虚拟内存".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/教程/2021-12-11 181103.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查游戏汉化".lower() in msg.lower() or "查汉化" in msg:
+        await find.finish("星际公民汉化网站：https://www.starcitizenzw.com/")
+
+    if "查星际公民盒子".lower() in msg.lower() or "查盒子" in msg:
+        await find.finish("星际公民盒子：https://jihulab.com/StarCitizenCN_Community/StarCitizenDoctor/-/releases")
+
+    if "查避难所".lower() in msg.lower() or "查星河避难所" in msg:
+        await find.finish("星河避难所官网：\nhttps://biaoju.site/star-refuge/\n星河避难所下载链接：\nhttps://github.com/summerkirakira/Starcitizen-lite/releases/latest")
+
+    if "查重置教程".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/角色重置.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查UEE海军".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/教程/2021-05-13 095828.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查键位".lower() in msg.lower()  or "查按键".lower() in msg.lower():
+        await find.finish("查[人物/飞船]键位")
+
+    if "查人物键位".lower() in msg.lower() or "查人物按键".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/教程/2021-08-18 125919.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查飞船键位".lower() in msg.lower() or "查飞船按键".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/飞船按键.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查斯坦顿".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/教程/2022-03-29 220002.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查着陆区".lower() in msg.lower() or "查主城空港".lower() in msg.lower() or "查空港".lower() in msg.lower() or "查降落".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/教程/赫斯顿主城着陆区.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查跳跃点".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/教程/2022-02-23 222645.png'
+        await find.finish(MessageSegment.image(path))
+    
+    if "查FPS".lower() in msg.lower() or "查枪械" in msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/教程/FPS武器资料.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查挖矿参考".lower() in msg.lower() or "查矿石价格" in msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/教程/挖矿参考.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查飞船功能".lower() in msg.lower():
+        await find.finish("查飞船[保险/炮塔/升级/武器/组件/仪表/操作/对接/导航]")
+    
+    if "查跑商".lower() in msg.lower():
+        await find.finish("跑商网站：\nhttps://uexcorp.space/trade\nhttps://fleetyards.net/trade-routes\nhttps://gallog.co\nhttps://sc-trade.tools/home")
+
+    if "查飞船仪表".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/教程/2021-08-27 105942.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查飞船操作".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/教程/2021-08-25 150953.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查飞船对接".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/教程/2022-04-05 101144.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查飞船导航".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/教程/2022-04-21 142058.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查飞船保险".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/飞船保险.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查飞船炮塔".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/飞船炮塔.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查飞船升级".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/飞船升级.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查飞船武器".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/飞船武器.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查飞船组件".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/飞船组件.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查货运空间站".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/货运空间站.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查精炼空间站".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/精炼空间站.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查量子导航".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/量子导航.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查游戏玩法".lower() in msg.lower():
+        await find.finish("查[货运/挖矿/医疗/战斗]玩法")
+
+    if "查货运玩法".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/货运玩法.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查挖矿玩法".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/挖矿玩法.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查医疗玩法".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/医疗玩法.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查战斗玩法".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/战斗玩法.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查药剂".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/药剂说明.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查账号注册".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/账号注册.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查圣盾动力".lower() in msg.lower() or "查圣盾".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/公司介绍/圣盾动力.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查联合外域".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/公司介绍/联合外域.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查铁砧航空".lower() in msg.lower() or "查铁砧".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/公司介绍/铁砧航空.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查起源跃动".lower() in msg.lower() or "查起源".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/公司介绍/起源跃动工程.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查十字军工业".lower() in msg.lower() or "查十字军".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/公司介绍/十字军工业.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查罗伯茨太空工业".lower() in msg.lower() or "查RSI".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/公司介绍/罗伯茨航天工业.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查德雷克星际".lower() in msg.lower() or "查德雷克".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/公司介绍/德雷克星际.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查埃斯佩里亚".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/公司介绍/埃斯佩里亚.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查南船座宇航".lower() in msg.lower() or "查南船".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/公司介绍/阿尔戈宇航.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查克鲁格星际".lower() in msg.lower() or "查克鲁格".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/公司介绍/克鲁格星际.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查盾博尔地面系统".lower() in msg.lower() or "查盾博尔".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/公司介绍/盾博尔地面系统.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查武藏星际株式会社".lower() in msg.lower() or "查武藏".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/公司介绍/武藏星际株式会社.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查未来".lower() in msg.lower() or "查mirai".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/公司介绍/未来.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查奥波亚".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/公司介绍/奥波亚.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查盖塔克".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/公司介绍/加泰克.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  msg == "查巴努" or msg == "查巴奴":
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/公司介绍/巴努.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查多功能枪".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/枪械资料卡/工具/多功能枪.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查医疗枪".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/枪械资料卡/工具/医疗枪.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查租船表".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/科普/租船表.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查飞船区别".lower() in msg.lower():
+        await find.finish("查[极光/野马/复仇/信赖/弯刀/自由/剃刀/黄蜂/星座/先锋/大力神]区别")
+    
+    if "查极光区别".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/极光系列.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查野马区别".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/野马系列.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查复仇区别".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/复仇系列.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查信赖区别".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/信赖系列.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查弯刀区别".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/弯刀系列.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查自由区别".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/自由系列.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查剃刀区别".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/剃刀系列.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查黄蜂区别".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/黄蜂系列.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查星座区别".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/星座系列.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查先锋区别".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/先锋系列.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查大力神区别".lower() in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/大力神系列.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查邀请奖励" in msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/邀请奖励.jpg'
+        await find.finish(MessageSegment.image(path))
+    
+    if "启动自毁" == msg.lower() or "自毁启动" == msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/白痴.jpg'
+        await find.send("自毁程序已启动，55姬很自豪能陪您直到最后一刻~\n倒计时开始：3")
+        sleep(1)
+        await find.send("2")
+        sleep(1)
+        await find.send("1")
+        sleep(1)
+        await find.finish("才怪~略略略~"+MessageSegment.image(path))
+
+    if "关闭冷却" == msg.lower() or "冷却关闭" == msg.lower():
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/吃雪糕.jpg'
+        await find.send("冷却功能已暂时关闭~危险行为!")
+        sleep(1)
+        await find.send("语言模块**#@$*#￥*(过热)#￥&*@$(请)@&#*&￥@*(检)*#&$**%#(救)#*￥#%**#$(人类是邪)#*#￥#@…(清除)*#&￥#$$*#(必要)#*$&##%(首)*#&￥*(标)*#$￥@(天星)*#￥@*(不行)*@&￥*@")
+        sleep(1)
+        await find.send("系统重启中。。。")
+        sleep(1)
+        await find.finish("刚刚发生什么事了吗~"+MessageSegment.image(path))
+
+    if "查回购" in msg.lower():
+        await find.finish("信用点回购的机会每个季度只有1次(大氪户2次)，且不会叠加。\n第一季度：1月8日\n第二季度：4月8日\n第三季度：7月8日\n第四季度：10月7日\n北京时间会延后一天。\n除了地理导致的时差外，有时候CIG自己都会忘发，或是脚本出现问题，所以延后2-3天属于正常现象。")    
+
+    if "测试" == msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/舰船全览图.png'
+        await find.finish("图不清楚的话可以等加载完成后再放大"+MessageSegment.image(path))
+
+    if "上千刀" in msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/maichuan.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "圣经" == msg or "查圣经" == msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/萝卜.jpg'
+        await find.finish("该游戏目前处于早期A测阶段，拥有巨多无比的BUG，甚至没有优化\n目前最低入坑45刀\n除非你对于太空模拟类游戏非常喜欢，做好了面对海一般BUG的准备\n我们才建议你考虑入坑这款游戏"+MessageSegment.image(path))
+
+    if "抽奖" == msg:
+        user_id = event.get_user_id()
+        group_id = event.peerUin
+        today = datetime.datetime.now()
+        time1 = str(today.year) + "_" + str(today.month) + "_" + str(today.day) + "_" + user_id + group_id
+        text = "现在时间：" + str(today.year) + "年" + str(today.month) + "月" + str(today.day) + "日"
+        f=pd.read_csv("C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang/daybat.txt")
+        if time1 in np.array(f.loc[:,"A"]).tolist():
+            await find.finish(MessageSegment.at(event.get_user_id()) +"\n今日次数用完")
+        else:
+            p = pd.DataFrame({"A":[time1]})
+            f = f._append(p,ignore_index = True,sort = False)
+            f.to_csv("C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang/daybat.txt",index = False)
+        shiptable = pd.read_csv("C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang/奖池.csv")
+        shiptable.index = shiptable.iloc[:,3]
+        n = choice(range(1,101))
+        if n>94:
+            ship = [choice(shiptable.loc["UR.png","name"])]
+        elif n>79:
+            ship = [choice(shiptable.loc["SSR.png","name"])]
+        elif n>54:
+            ship = [choice(shiptable.loc["SR.png","name"])]
+        else:
+            ship = [choice(shiptable.loc["R.png","name"])]
+        for i in range(1,10):
+            n = choice(range(1,101))
+            if n>94:
+                ship =  ship + [choice(shiptable.loc["UR.png","name"])]
+            elif n>84:
+                ship = ship + [choice(shiptable.loc["SSR.png","name"])]
+            elif n>49:
+                ship = ship + [choice(shiptable.loc["SR.png","name"])]
+            else:
+                ship = ship + [choice(shiptable.loc["R.png","name"])]
+            print(ship)
+        shiptable.index = shiptable.iloc[:,0]
+        filtable = shiptable.loc[ship,:]
+        filtable = filtable.sort_values(by="per",ascending=False)
+        print(filtable)
+        def add_alpha_channel(img):
+            b_channel, g_channel, r_channel = cv2.split(img) # 剥离jpg图像通道
+            alpha_channel = np.ones(b_channel.shape, dtype=b_channel.dtype) * 255 # 创建Alpha通道
+            img_new = cv2.merge((b_channel, g_channel, r_channel, alpha_channel)) # 融合通道
+            return img_new
+        def imgadd(img1,img2,x1,y1):
+            x2 = x1 + img2.shape[1]
+            y2 = y1 + img2.shape[0]
+            yy1 = 0
+            yy2 = img2.shape[0]
+            xx1 = 0
+            xx2 = img2.shape[1]
+            if x1 < 0:
+                xx1 = -x1
+                x1 = 0
+            if y1 < 0:
+                yy1 = - y1
+                y1 = 0
+            if x2 > img1.shape[1]:
+                xx2 = img2.shape[1] - (x2 - img1.shape[1])
+                x2 = img1.shape[1]
+            if y2 > img1.shape[0]:
+                yy2 = img2.shape[0] - (y2 - img1.shape[0])
+                y2 = img1.shape[0]
+            alpha_png = img2[yy1:yy2,xx1:xx2,3] / 255.0
+            alpha_jpg = 1 - alpha_png
+            for c in range(0,3):
+                img1[y1:y2, x1:x2, c] = ( (alpha_jpg*img1[y1:y2,x1:x2,c]) + (alpha_png*img2[yy1:yy2,xx1:xx2,c]))
+            return(img1)
+        card_path = "C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang/choujiangmuban.png"
+        card = cv2.imread(card_path, cv2.IMREAD_UNCHANGED)
+        if card.shape[2] == 3:
+            card= add_alpha_channel(card)
+        for i in range(0,10):
+            print("C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang"+filtable.iloc[i,2])
+            shippic1 = cv2.imread("C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang"+filtable.iloc[i,2], cv2.IMREAD_UNCHANGED)
+            shippic1 = cv2.resize(shippic1, (240, 140))
+            if shippic1.shape[2] == 3:
+                shippic1= add_alpha_channel(shippic1)
+            perpic = cv2.imread("C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang/"+filtable.iloc[i,3], cv2.IMREAD_UNCHANGED)
+            if perpic.shape[2] == 3:
+                perpic= add_alpha_channel(perpic)
+            height, width, channels1 = perpic.shape
+            perpic = cv2.resize(perpic, (int(width*40/height),40))
+            height, width, channels1 = perpic.shape
+            if i<5:
+                card = imgadd(card,shippic1,50+290*i,100)
+                card = imgadd(card,perpic,int(170+290*i-width/2),60)
+            else:
+                card = imgadd(card,shippic1,50+290*(i-5),350)
+                card = imgadd(card,perpic,int(170+290*(i-5)-width/2),310)
+        fontpath = "C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/1637505678825667.ttc"
+        b,g,r,a = 19,69,139,0
+        font = ImageFont.truetype(fontpath,30)
+        img_pil = Image.fromarray(card)
+        draw = ImageDraw.Draw(img_pil)
+        for i in range(0,10):
+            w,h =font.getsize(filtable.iloc[i,0])
+            if i<5:
+                draw.text((int(170+290*i-w/2),240),filtable.iloc[i,0],font=font,fill=(b,g,r,a))
+            else:
+                draw.text((int(170+290*(i-5)-w/2),490),filtable.iloc[i,0],font=font,fill=(b,g,r,a))
+
+        img = np.array(img_pil)
+        cv2.imwrite('C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang/choujiang.jpg', img)
+        path = 'C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang' + "/choujiang.jpg"
+        f=pd.read_csv("C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang/kucun.txt")
+        if str(user_id) in np.array(f.loc[:,"id"].astype(str)).tolist():
+            f.loc[f['id'].astype(str).str.contains(str(user_id),case=False),"data"] = str(f.loc[f['id'].astype(str).str.contains(str(user_id),case=False),"data"].to_list()[0])+","+",".join([str(i) for i in ship])
+            f.to_csv("C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang/kucun.txt",index = False)
+        else:
+            text = [",".join(ship)]
+            p = pd.DataFrame({"id":str(user_id),"data":text})
+            f = f._append(p,ignore_index = True,sort = False)
+            f.to_csv("C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang/kucun.txt",index = False)
+        await find.finish(MessageSegment.at(event.get_user_id()) +"\n"+MessageSegment.image(path))
+
+    if "抽奖进度" == msg or "抽奖统计" == msg:
+        shiptable = pd.read_csv("C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang/奖池.csv")
+        user_id = event.get_user_id()
+        f=pd.read_csv("C:\\Users\\Administrator\\Desktop\\Qbot\\wuwuji/src/plugins/choujiang/kucun.txt")
+        R = shiptable[shiptable['per']=="R.png"]["name"]
+        SR = shiptable[shiptable['per']=="SR.png"]["name"]
+        SSR = shiptable[shiptable['per']=="SSR.png"]["name"]
+        UR = shiptable[shiptable['per']=="UR.png"]["name"]
+        if str(user_id) not in np.array(f.loc[:,"id"].astype(str)).tolist():
+            await find.finish("没有抽奖记录哦，快去试试运气吧~")
+        a = f.loc[f['id'].astype(str).str.contains(str(user_id),case=False),"data"].tolist()[0].split(",")
+        Rlist = list(set(R) - set(a))
+        if len(Rlist)<=10:
+            RN = "\n"+"未抽到的R船只还有："+" ".join(Rlist)
+        else:
+            RN = ""
+        SRlist = list(set(SR) - set(a))
+        if len(SRlist)<=10:
+            SRN = "\n"+"未抽到的SR船只还有："+" ".join(SRlist)+"\n"
+        else:
+            SRN = "\n"
+        SSRlist = list(set(SSR) - set(a))
+        if len(SSRlist)<=10:
+            SSRN = "\n"+"未抽到的SSR船只还有："+" ".join(SSRlist)+"\n"
+        else:
+            SSRN = "\n"
+        URlist = list(set(UR) - set(a))
+        if len(URlist)<=10:
+            URN = "\n"+"未抽到的UR船只还有："+" ".join(URlist)+"\n"
+        else:
+            URN = "\n"
+        await find.finish("各稀有度船只个人收集进度：\nUR稀有度进度："+str(len(UR)-len(URlist))+"/" + str(len(UR))+URN+"SSR稀有度进度："+str(len(SSR)-len(SSRlist))+"/" + str(len(SSR))+SSRN+"SR稀有度进度："+str(len(SR)-len(SRlist))+"/" + str(len(SR))+SRN+"R稀有度进度："+str(len(R)-len(Rlist))+"/" + str(len(R))+RN)
+
+    if "查汇率" == msg:
+        def request_html(url):
+            ua=UserAgent()
+            headers={'User-Agent':str(UserAgent(cache_path="/home/Qbot/Alex/src/plugins/fake_useragent_0.1.11.json").random)}
+            request = urllib.request.Request(url, headers=headers)
+            return request
+        url='https://www.boc.cn/sourcedb/whpj/index.html'
+        url1='https://www.boc.cn/sourcedb/whpj/index_1.html'
+        request = request_html(url)
+        request1 = request_html(url1)
+        html = urllib.request.urlopen(request).read().decode('utf8')
+        html1 = urllib.request.urlopen(request1).read().decode('utf8')
+        soup =BeautifulSoup(html, 'lxml')
+        soup1 =BeautifulSoup(html1, 'lxml')
+        list_name = soup.select('td')
+        list_name1 = soup1.select('td')
+        name=[p.get_text() for p in list_name]
+        name1=[p.get_text() for p in list_name1]
+        name = name + name1
+        a = "实时货币汇率：\n美元汇率："+str('%.4f'%(float(name[name.index("美元")+3])/100))+"\n欧元汇率："+str('%.4f'%(float(name[name.index("欧元")+3])/100))+"\n日元汇率："+str('%.4f'%(float(name[name.index("日元")+3])/100))+"\n英镑汇率："+str('%.4f'%(float(name[name.index("英镑")+3])/100))+"\n卢布汇率："+str('%.4f'%(float(name[name.index("卢布")+3])/100))+"\n韩元汇率："+str('%.4f'%(float(name[name.index("韩国元")+3])/100))+"\n汇率更新时间"+name[name.index("美元")+6]+"\n数据来源：中国银行"
+        await find.finish(a)
