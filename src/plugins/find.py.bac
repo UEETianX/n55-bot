@@ -1,0 +1,60 @@
+from nonebot.adapters.red import Message,MessageSegment
+from nonebot import on_command,on_message
+from nonebot.typing import T_State
+from nonebot.adapters import Bot,Event
+import requests
+import os
+import random
+import nonebot
+
+
+find=on_message(priority=2)
+
+@find.handle()
+async def _(bot:Bot,event:Event,state:T_State):
+    msg = str(event.get_message()).strip()
+    if "查冷却" in msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/冷却器.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查发电机" in msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/发电机.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查护盾" in msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/护盾.png'
+        await find.finish(MessageSegment.image(path))
+
+    if  msg =="查量子":
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/量子引擎.png'
+        await find.finish(MessageSegment.image(path))
+
+    if "查舰船武器" in msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/舰船武器.png'
+        await find.finish(MessageSegment.image(path))
+
+    if msg == "查导弹":
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/导弹.png'
+        await find.finish(MessageSegment.image(path))
+
+#    if "查菜单" in msg:
+#        path=os.path.split(os.path.realpath(__file__))[0] + '/img/菜单.png'
+#        await find.finish(MessageSegment.image(path))
+
+#    if msg == "6":
+#        if random.randint(0,99) > 50:
+#            path=os.path.split(os.path.realpath(__file__))[0] + '/img/仰望.jpg'
+#            await find.finish("6"+MessageSegment.image(path))
+    
+#    if msg == "色图":
+#        path=os.path.split(os.path.realpath(__file__))[0] + '/img/生气.jpg'
+#        await find.finish("没有这种东西啦"+MessageSegment.image(path))
+
+    if "萝卜" in msg:
+        if random.randint(0,99) > 95:
+            path=os.path.split(os.path.realpath(__file__))[0] + '/img/萝卜.jpg'
+            await find.finish("萝卜觉得你说得对，并且试图向你传教"+MessageSegment.image(path))
+
+    if "欢迎大家入群体验这款10年大坑" in msg:
+        path=os.path.split(os.path.realpath(__file__))[0] + '/img/白痴.jpg'
+        await find.finish("退订请回复TD"+MessageSegment.image(path))

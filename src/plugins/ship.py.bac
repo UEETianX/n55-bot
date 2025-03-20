@@ -1,0 +1,804 @@
+from nonebot.adapters.onebot.v11 import Message,MessageSegment
+from nonebot import on_command,on_message
+from nonebot.typing import T_State
+from nonebot.adapters import Bot,Event
+import requests
+import os
+import random
+
+find=on_message(priority=2)
+
+@find.handle()
+async def _(bot:Bot,event:Event,state:T_State):
+    msg = str(event.get_message()).strip()
+    if "查F8A".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/UEE 海军/F8A闪电.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查惩戒".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/UEE 海军/惩戒.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查梅林".lower() in msg.lower() or "查p52".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/克鲁格星际/梅林.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查阿基米德".lower() in msg.lower() or "查p72".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/克鲁格星际/阿基米德.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查王船".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/剜度/王船.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查莱伦".lower() in msg.lower() or "查锐伦".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/加泰克（西安外星工业）/莱伦.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查创世纪".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/十字军工业/创世纪.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查A2".lower() in msg.lower() or "查大力神A2".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/十字军工业/大力神A2.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查C2".lower() in msg.lower() or "查大力神C2".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/十字军工业/大力神C2.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查M2".lower() in msg.lower() or "查大力神M2".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/十字军工业/大力神M2.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  msg.lower() == "查大力神".lower():
+        await find.finish("有多个型号，要查哪个？\n\n查大力神[A2/C2/M2]")
+
+    if  "查黑战神".lower() in msg.lower() or "查战神地狱".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/十字军工业/战神地狱.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查白战神".lower() in msg.lower() or "查战神离子".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/十字军工业/战神离子.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查战神".lower() in msg.lower():
+        await find.finish("有多个型号，要查哪个？\n\n查[黑/白]战神")
+
+    if  "查星灵A1".lower() in msg.lower() or "查A1".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/十字军工业/星灵A1.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查星灵E1".lower() in msg.lower() or "查E1".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/十字军工业/星灵E1.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查星灵C1".lower() in msg.lower() or "查C1".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/十字军工业/星灵C1.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查星灵".lower() in msg.lower():
+        await find.finish("有多个型号，要查哪个？\n\n查星灵[A1/C1/E1]")
+
+    if  "查水星".lower() in msg.lower() or "查墨丘利".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/十字军工业/水星.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查MPUVC".lower() in msg.lower() or "查MPUV货运".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/南船宇航/MPUV C.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查MPUVP".lower() in msg.lower() or "查MPUV载人".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/南船宇航/MPUV P.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查MPUV".lower() in msg.lower():
+        await find.finish("有多个型号，要查哪个？\n\n查MPUV[载人/货运]")
+
+    if  "查SRV".lower() in msg.lower() or "查拖船".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/南船宇航/SRV.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查木筏".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/南船宇航/木筏.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查鼹鼠".lower() in msg.lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/南船宇航/鼹鼠.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查伊德里斯K".lower() in msg.lower() or "查小姨K".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/伊德里斯K.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查伊德里斯M".lower() in msg.lower() or "查小姨M".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/伊德里斯M.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查伊德里斯P".lower() in msg.lower() or "查小姨P".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/伊德里斯P.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查伊德里斯".lower() in msg.lower() or "查小姨".lower() in msg.lower():
+        await find.finish("有多个型号，要查哪个？\n\n查伊德里斯[K/M/P]")
+
+    if  "查先锋先驱".lower() in msg.lower() or "查先驱".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/先锋先驱.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查先锋重装".lower() in msg.lower() or "查重装".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/先锋重装.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查先锋典狱长".lower() in msg.lower() or "查典狱长".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/先锋典狱长.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查先锋哨兵".lower() in msg.lower() or "查哨兵".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/先锋哨兵.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  msg.lower() == "查先锋".lower():
+        await find.finish("有多个型号，要查哪个？\n\n查先锋[先驱/重装/典狱长/哨兵]")
+
+    if  "查军刀彗星".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/军刀彗星.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查军刀".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/军刀.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查回收者".lower() in msg.lower() or "查再生者".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/回收者.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查复仇术士".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/复仇术士.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查复仇泰坦".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/复仇泰坦.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查复仇追猎".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/复仇追猎者.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  msg.lower() == "查复仇".lower() or msg == "查复仇者":
+        await find.finish("有多个型号，要查哪个？\n\n查复仇[术士/泰坦/追猎]")
+
+    if  "查报复基础".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/报复基础.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查报复轰炸".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/报复轰炸.jpg'
+        await find.finish(MessageSegment.image(path))        
+
+    if "查报复".lower() in msg.lower():
+        await find.finish("有多个型号，要查哪个？\n\n查报复[基础/轰炸]")
+
+    if  "查救赎".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/救赎.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查日蚀".lower() in msg.lower() or "查日食".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/日蚀.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查标枪".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/标枪.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查军刀渡鸦".lower() in msg.lower() or "查渡鸦".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/渡鸦.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查火神".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/火神.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查短剑勇士".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/短剑勇士.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查短剑海盗".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/短剑海盗.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查短剑".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/短剑.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查锤头".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/锤头鲨.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查鹦鹉螺".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/圣盾动力/鹦鹉螺.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查利爪伯劳".lower() in msg.lower() or "查伯劳".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/埃斯佩里亚/伯劳.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查利爪".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/埃斯佩里亚/利爪.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查刀锋".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/埃斯佩里亚/刀锋.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查徘徊".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/埃斯佩里亚/徘徊者.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查死镰".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/埃斯佩里亚/死镰.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查长刀".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/埃斯佩里亚/长刀.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查NOX".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/奥波啊（西安外星工业）/NOX.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查卡图".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/奥波啊（西安外星工业）/卡图.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查桑托起亚".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/奥波啊（西安外星工业）/桑托起亚.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查巴商".lower() in msg.lower() or "查巴奴商船".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/巴努/巴奴行商.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查巴卫".lower() in msg.lower() or "查巴奴防卫者".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/巴努/巴奴防卫者.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查信使".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/德雷克星际/信使.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查小刀".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/德雷克星际/小刀.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查掠夺者".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/德雷克星际/掠夺者.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查毛虫".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/德雷克星际/毛虫.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查海妖私掠".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/德雷克星际/海妖私掠.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查海妖".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/德雷克星际/海妖.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查海盗船".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/德雷克星际/海盗船.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查秃鹫".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/德雷克星际/秃鹫.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查红弯刀".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/德雷克星际/红弯刀.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查蓝弯刀".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/德雷克星际/蓝弯刀.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查黑弯刀".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/德雷克星际/黑弯刀.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查钢弯刀".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/德雷克星际/钢弯刀.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查蜻蜓".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/德雷克星际/蜻蜓.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查骡子".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/德雷克星际/骡子.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查剃刀EX".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/未来（武藏工业子品牌）/剃刀EX.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查剃刀LX".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/未来（武藏工业子品牌）/剃刀LX.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  msg.lower() == "查剃刀".lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/未来（武藏工业子品牌）/剃刀.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查狂怒LX".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/未来（武藏工业子品牌）/狂怒LX.jpg'
+        await find.finish(MessageSegment.image(path))
+    
+    if  "查狂怒MX".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/未来（武藏工业子品牌）/狂怒MX.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查狂怒".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/未来（武藏工业子品牌）/狂怒.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查信赖武装".lower() in msg.lower() or "查信赖Tana".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/信赖塔娜.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查信赖科考".lower() in msg.lower() or "查信赖sen".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/信赖森.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查信赖新闻".lower() in msg.lower() or "查信赖mako".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/信赖真子.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查信赖货运".lower() in msg.lower() or "查信赖kore".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/信赖科雷.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  msg.lower() == "查信赖".lower():
+        await find.finish("有多个型号，要查哪个？\n\n查信赖[货运/新闻/科考/武装]")
+
+    if  "查勘探者".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/勘探者.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查奋进".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/奋进.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查奥德赛".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/奥德赛.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查无垠".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/无垠.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查星际远航者双子座".lower() in msg.lower() or "查军油".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/星际远航者双子座.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查星际远航者".lower() in msg.lower() or "查民油".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/星际远航者.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查自由dur".lower() in msg.lower() or "查自由枪骑兵dur".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/自由dur.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查自由max".lower() in msg.lower() or "查自由枪骑兵max".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/自由max.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查自由mis".lower() in msg.lower() or "查自由枪骑兵mis".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/自由mis.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查自由基础".lower() in msg.lower() or "查自由枪骑兵基础".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/自由.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  msg.lower() == "查自由".lower() or msg.lower() == "查自由枪骑兵".lower():
+        await find.finish("有多个型号，要查哪个？\n\n查自由[基础/Dur/Max/Mis]")
+
+    if  "查货A".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/货A.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查货B".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/货B.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查货C".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/货C.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查货D".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/货D.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查货E".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/武藏星际株式会社/货E.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查PTV".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/灰猫工业/PTV.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查ROC-DS".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/灰猫工业/ROC-DS.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查ROC".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/灰猫工业/ROC.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查STV".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/灰猫工业/STV.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查新星".lower() in msg.lower() or "查NOVA".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/盾博尔/新星坦克.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查旋风AA".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/盾博尔/旋风AA.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查旋风MT".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/盾博尔/旋风MT.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查旋风RC".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/盾博尔/旋风RC.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查旋风RN".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/盾博尔/旋风RN.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查旋风TR".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/盾博尔/旋风TR.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查旋风基础".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/盾博尔/旋风.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查旋风".lower() in msg.lower():
+        await find.finish("有多个型号，要查哪个？\n\n查旋风[基础/AA/MT/RC/RN/TR]")
+
+    if  "查游侠CV".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/盾博尔/游侠CV.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查游侠RC".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/盾博尔/游侠RC.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查游侠TR".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/盾博尔/游侠TR.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查游侠".lower() in msg.lower():
+        await find.finish("有多个型号，要查哪个？\n\n查游侠[CV/RC/TR]")
+
+    if  "查风暴".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/盾博尔/风暴.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查北极星".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/北极星.jpg'
+        await find.finish(MessageSegment.image(path))
+    
+    if  "查大熊".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/大熊座.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查天蝎".lower() == msg.lower() or "查天蝎座".lower() == msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/天蝎座.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查孟加拉".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/孟加拉航母.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查山猫".lower() in msg.lower() or "查天猫".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/山猫座.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查仙女".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/星座仙女座.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查凤凰".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/星座凤凰座.jpg'
+        await find.finish(MessageSegment.image(path))
+    
+    if  "查天鹰".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/星座天鹰座.jpg'
+        await find.finish(MessageSegment.image(path))
+    
+    if  "查金牛".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/星座金牛座.jpg'
+        await find.finish(MessageSegment.image(path))
+    
+    if  "查极光CL".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/极光 CL.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查极光ES".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/极光 ES.jpg'
+        await find.finish(MessageSegment.image(path))
+    
+    if  "查极光LN".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/极光 LN.jpg'
+        await find.finish(MessageSegment.image(path))
+    
+    if  "查极光LX".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/极光 LX.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查极光MR".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/极光 MR.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  msg.lower() == "查极光".lower():
+        await find.finish("有多个型号，要查哪个？\n\n查极光[CL/ES/LN/LX/MR]")
+
+    if  "查猎户座".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/猎户座.jpg'
+        await find.finish(MessageSegment.image(path))
+    
+    if  "查英仙座".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/英仙座.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查蝎心".lower() in msg.lower() or "查电蝎".lower() in msg.lower() or "查心宿二".lower() in msg.lower() or "查天蝎座心宿二".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/蝎心.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查银河".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/银河.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查螳螂".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/螳螂.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查阿波罗分诊".lower() in msg.lower() or "查红阿波罗".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/阿波罗分诊.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查阿波罗医疗".lower() in msg.lower() or "查白阿波罗".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/罗伯茨太空工业/阿波罗医疗.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查阿波罗".lower() in msg.lower():
+        await find.finish("有多个型号，要查哪个？\n\n查[红/白]阿波罗")
+
+    if  "查开拓".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/联合外域/开拓.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查悬浮驷".lower() in msg.lower() or "查悬浮四".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/联合外域/悬浮驷.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查游牧".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/联合外域/游牧.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查野马伽马".lower() in msg.lower() or "查野马Gamma".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/联合外域/野马伽马.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查野马德尔塔".lower() in msg.lower() or "查野马Delta".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/联合外域/野马德尔塔.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查野马欧米伽".lower() in msg.lower() or "查野马Omega".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/联合外域/野马欧米伽.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查野马贝塔".lower() in msg.lower() or "查野马Beta".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/联合外域/野马贝塔.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查野马阿尔法".lower() in msg.lower() or "查野马Alpha".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/联合外域/野马阿尔法.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if   msg.lower() == "查野马".lower():
+        await find.finish("有多个型号，要查哪个？\n\n查野马[阿尔法/贝塔/伽马/德尔塔/欧米伽]")
+
+    if  "查100i".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/100i.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查125A".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/125A.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查135C".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/135C.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查300I".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/300I.jpg'
+        await find.finish(MessageSegment.image(path))
+        
+    if  "查315P".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/315P.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查325A".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/325A.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查350R".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/350R.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查400i".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/400i.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查600i探索".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/600 探索.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查600i旅游".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/600 旅游.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查600i行政".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/600 行政.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查600i".lower() in msg.lower():
+        await find.finish("有多个型号，要查哪个？\n\n查600i[探索/旅游/行政]")
+
+    if  "查85X".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/85X.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查890".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/890 跃动.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查G12R".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/G12R.jpg'
+        await find.finish(MessageSegment.image(path))
+    
+    if  "查G12A".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/G12A.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查G12基础".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/G12.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查G12".lower() in msg.lower():
+        await find.finish("有多个型号，要查哪个？\n\n查G12[基础/A/R]")
+
+    if  "查M50".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/M50.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查X1竞速".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/X1竞速.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查X1力".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/X1力.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查X1基础".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/起源悦动/X1.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查X1".lower() in msg.lower():
+        await find.finish("有多个型号，要查哪个？\n\n查X1[基础/力/竞速]")
+
+    if  "查F8C".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/F8C闪电.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查F8C行政".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/F8C闪电 行政.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查克拉克".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/克拉克.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查军团兵".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/军团兵.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查军黄".lower() in msg.lower() or "查F7A".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/军黄F7A.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查双鱼座C8R".lower() in msg.lower() or "查C8R".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/双鱼座C8R.jpg'
+        await find.finish(MessageSegment.image(path))
+    
+    if  "查双鱼座C8X".lower() in msg.lower() or "查C8X".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/双鱼座C8X.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查双鱼座基础".lower() in msg.lower() or "查C8基础".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/双鱼座C8.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查c8".lower() in msg.lower() or "查双鱼座".lower() in msg.lower():
+        await find.finish("有多个型号，要查哪个？\n\n查c8[基础/X/R]")
+
+    if  "查坩埚".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/坩埚.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查女武神".lower() in msg.lower() or "查瓦尔基里".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/女武神.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查弩炮".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/弩炮.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查斯巴达".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/斯巴达.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查水龟".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/水龟.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查猎鹰".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/猎鹰.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查百夫长".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/百夫长.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查箭矢".lower() in msg.lower() or "查箭头".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/箭矢.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查角斗士".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/角斗士.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查解放者".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/解放者.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查飓风".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/飓风.jpg'
+        await find.finish(MessageSegment.image(path))
+    
+    if  "查大黄蜂基础".lower() in msg.lower() or "查普黄".lower() in msg.lower() or "查F7C".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/大黄蜂F7C.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查大黄蜂M".lower() in msg.lower() or "查超黄".lower() in msg.lower() or "查超级大黄蜂".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/大黄蜂M.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查大黄蜂R".lower() in msg.lower() or "查追黄".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/大黄蜂R.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if  "查大黄蜂S".lower() in msg.lower() or "查隐黄".lower() in msg.lower():
+        path='file:///' +os.path.split(os.path.realpath(__file__))[0] + '/FOD问答资料图/飞船资料卡/铁砧航天/大黄蜂S.jpg'
+        await find.finish(MessageSegment.image(path))
+
+    if "查大黄蜂".lower() == msg.lower() or "查黄蜂".lower() == msg.lower():
+        await find.finish("有多个型号，要查哪个？\n\n查大黄蜂[基础/M/R/S]")

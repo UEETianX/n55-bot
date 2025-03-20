@@ -1,0 +1,32 @@
+from nonebot.adapters.red import Message
+from nonebot import on_keyword
+from nonebot.typing import T_State
+from nonebot.adapters import Bot,Event
+import requests
+import ssl
+from random import choice
+import random
+import json
+
+pic=on_keyword({'随机老婆'})
+@pic.handle()
+async def _(bot:Bot,event:Event,state:T_State):
+#    msg = await suijitu()    
+#    await pic.send(Message(msg))
+    await pic.send("网络原因(也可能不是)，此功能暂时停用")
+
+    
+
+
+#async def suijitu():
+#    url = choice(['https://api.yimian.xyz/img','https://img.xjh.me/random_img.php','http://www.dmoe.cc/random.php','https://api.vvhan.com/api/acgimg'])    
+    #url = choice(['http://www.dmoe.cc/random.php'])
+    #url = "https://api.lolicon.app/setu/v2?size=small"
+    #response = requests.get(url)
+    #data = response.json()
+    #url = data['data'][0]['urls']['small']
+#    pic = requests.get(url,verify=True)
+#    pic_ti = f"[CQ:image,file={pic.url}]"
+#    print(url)
+#    return pic_ti
+

@@ -1,0 +1,17 @@
+from nonebot.adapters.red import Message,MessageSegment
+from nonebot import on_keyword
+from nonebot.typing import T_State
+from nonebot.adapters import Bot,Event
+import requests
+import ssl
+from random import choice
+import random
+import json
+import os
+
+ecyt = on_keyword({'来点大饼','涩图'})
+ 
+@ecyt.handle()
+async def _(bot:Bot,event:Event,state:T_State):
+    path=os.path.split(os.path.realpath(__file__))[0] +"/idimg/"+str(choice(range(1,432)))+".jpg"
+    await ecyt.finish(MessageSegment.image(path))
